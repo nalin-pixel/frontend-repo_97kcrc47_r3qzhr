@@ -1,6 +1,10 @@
 import React from 'react'
 
 const Hero = () => {
+  const defaultImage = "https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?q=80&w=1200&auto=format&fit=crop"
+  // You can set VITE_HERO_IMAGE to a full image URL or to a file placed in /public (e.g., "/coffee-hero.jpg")
+  const heroImageUrl = import.meta.env.VITE_HERO_IMAGE || "/coffee-hero.jpg" || defaultImage
+
   return (
     <section className="relative overflow-hidden">
       <div className="absolute inset-0 pointer-events-none">
@@ -42,8 +46,11 @@ const Hero = () => {
             </div>
           </div>
 
-          <div className="w-full md:w-[420px]">
-            <div className="aspect-square rounded-2xl bg-[url('https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?q=80&w=1200&auto=format&fit=crop')] bg-cover bg-center shadow-2xl ring-1 ring-slate-200" />
+          <div className="w-full md:w-[420px]" aria-label="Photo of The Coffee House in Pimlico with a coffee cup">
+            <div
+              className="aspect-square rounded-2xl bg-cover bg-center shadow-2xl ring-1 ring-slate-200"
+              style={{ backgroundImage: `url(${heroImageUrl})` }}
+            />
           </div>
         </div>
 
