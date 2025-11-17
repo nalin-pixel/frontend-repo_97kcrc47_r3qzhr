@@ -13,8 +13,8 @@ const Hero = () => {
       </div>
 
       <div className="relative max-w-6xl mx-auto px-6 pt-20 pb-16">
-        <div className="flex flex-col md:flex-row items-start md:items-center gap-10">
-          <div className="flex-1">
+        <div className="grid md:grid-cols-2 gap-10 items-center">
+          <div className="order-2 md:order-1">
             <span className="inline-block text-xs tracking-widest uppercase text-amber-700 bg-amber-100 rounded-full px-3 py-1 mb-4">Pimlico • London</span>
             <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-slate-900">
               The Coffee House
@@ -23,10 +23,10 @@ const Hero = () => {
               A cosy, casual and trendy neighbourhood café on Lupus Street. Warm atmosphere, great coffee, and a welcoming spot for breakfasts, quick lunches, desserts and relaxed moments.
             </p>
 
-            <div className="mt-6 flex flex-wrap items-center gap-3">
-              <span className="px-3 py-1 rounded-full bg-slate-900 text-white text-xs">Cosy</span>
-              <span className="px-3 py-1 rounded-full bg-slate-900 text-white text-xs">Casual</span>
-              <span className="px-3 py-1 rounded-full bg-slate-900 text-white text-xs">Trendy</span>
+            <div className="mt-6 flex flex-wrap items-center gap-2">
+              {['Cosy','Casual','Trendy','Local'].map((chip) => (
+                <span key={chip} className="px-3 py-1 rounded-full bg-slate-900 text-white text-xs">{chip}</span>
+              ))}
             </div>
 
             <div className="mt-8 flex flex-wrap gap-3">
@@ -35,22 +35,29 @@ const Hero = () => {
             </div>
 
             <div className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-3 text-sm text-slate-700">
-              <div className="flex items-center gap-2 bg-white/80 border border-slate-200 rounded-lg px-3 py-2"><span>☕</span><span>Great coffee</span></div>
-              <div className="flex items-center gap-2 bg-white/80 border border-slate-200 rounded-lg px-3 py-2"><span>🪑</span><span>Indoor seating</span></div>
-              <div className="flex items-center gap-2 bg-white/80 border border-slate-200 rounded-lg px-3 py-2"><span>🌤️</span><span>Outdoor seating</span></div>
-              <div className="flex items-center gap-2 bg-white/80 border border-slate-200 rounded-lg px-3 py-2"><span>♿</span><span>Accessible</span></div>
-              <div className="flex items-center gap-2 bg-white/80 border border-slate-200 rounded-lg px-3 py-2"><span>🧁</span><span>Delicious desserts</span></div>
-              <div className="flex items-center gap-2 bg-white/80 border border-slate-200 rounded-lg px-3 py-2"><span>🕒</span><span>Quick bites</span></div>
-              <div className="flex items-center gap-2 bg-white/80 border border-slate-200 rounded-lg px-3 py-2"><span>📶</span><span>Work-friendly</span></div>
-              <div className="flex items-center gap-2 bg-white/80 border border-slate-200 rounded-lg px-3 py-2"><span>💳</span><span>Cards & NFC</span></div>
+              {[
+                ['☕','Great coffee'],
+                ['🪑','Indoor seating'],
+                ['🌤️','Outdoor seating'],
+                ['♿','Accessible'],
+                ['🧁','Desserts'],
+                ['🕒','Quick bites'],
+                ['📶','Work-friendly'],
+                ['💳','Cards & NFC'],
+              ].map(([icon,label]) => (
+                <div key={label} className="flex items-center gap-2 bg-white/80 border border-slate-200 rounded-lg px-3 py-2"><span aria-hidden>{icon}</span><span>{label}</span></div>
+              ))}
             </div>
           </div>
 
-          <div className="w-full md:w-[420px]" aria-label="Photo of The Coffee House in Pimlico with a coffee cup">
-            <div
-              className="aspect-square rounded-2xl bg-cover bg-center shadow-2xl ring-1 ring-slate-200"
-              style={{ backgroundImage: `url(${heroImageUrl})` }}
-            />
+          <div className="order-1 md:order-2" aria-label="Photo of The Coffee House in Pimlico with a coffee cup">
+            <div className="relative aspect-[4/5] md:aspect-[5/6] rounded-3xl overflow-hidden shadow-2xl ring-1 ring-slate-200">
+              <img src={heroImageUrl} alt="The Coffee House exterior" className="h-full w-full object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-black/10 to-transparent" />
+              <div className="absolute bottom-3 right-3">
+                <span className="inline-flex items-center rounded-full bg-white/90 px-3 py-1 text-xs font-medium text-slate-700 shadow">Open daily</span>
+              </div>
+            </div>
           </div>
         </div>
 
