@@ -28,7 +28,6 @@ function App() {
             {navItems.map((n) => (
               <a key={n.href} href={n.href} className="text-slate-700 hover:text-amber-700 transition-colors">{n.label}</a>
             ))}
-            <a href="/test" className="text-slate-500 hover:text-slate-800">System Test</a>
           </nav>
 
           <div className="flex items-center gap-3">
